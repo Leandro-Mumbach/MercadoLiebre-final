@@ -1,0 +1,1 @@
+module.exports = (req, res, next) => req.session.userLogin ? this.next() : this.res.redirect('/users/login')

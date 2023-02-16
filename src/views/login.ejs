@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('partials/head', {title: 'Detalle del producto'}) %>
+    <!-- Css de login -->
+    <style>.login-main{     
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: #ebebeb;}
+    .login-main-h1{
+        text-align: center;
+        width: 100%;
+        text-decoration: underline;}
+    .login-main-form{
+        display: flex;
+        margin-bottom: 15px;
+        justify-content: center;}
+    .login-main-form-div{
+        width: 80%;}
+    .login-main-usuario{
+        width: 100%;
+        padding: 0px 0px 0px 5px;
+        margin-bottom: 30px;
+        border: 0px;
+        height: 25px;
+        border-radius: 5px;}
+    .login-main-password{
+        width: 100%;
+        padding: 0px 0px 0px 5px;
+        margin: 0px 0px 30px 0px;
+        border: 0px;
+        height: 25px;
+        border-radius: 5px;}
+    .login-main-button{
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+        background-color:#1259c3;
+        color: white;
+        border: 0px;
+        height: 25px;
+        border-radius: 5px;
+        transition: 1s;
+        cursor: pointer;}
+    .login-main-button:hover{
+        background-color: #0022AA;
+        transition: 0.5s;
+    }
+    
+@media (min-width: 1024px){ 
+    .login-main-form-div{
+        width: 50%;}}
+    </style>
+<body class="body-home">
+    <%- include('partials/headerNavbar') %>
+    <main class="login-main">
+        <h1 class="login-main-h1">Iniciar sesión:</h1> 
+          <form class="login-main-form" action="" method="post">
+           <div class="login-main-form-div">
+            <div>
+                <input class="login-main-usuario" type="email" name="email" placeholder="Email de usuario:">
+                <% if (locals.errors && errors.email) { %>
+                 <p style="margin: -20px 0px 25px 5px; color: red; font-weight: bold;"><%= errors.email.msg %> </p>
+                <% } %>
+            </div>
+            <div>
+                <input class="login-main-password" type="password" name="password" placeholder="Elegí tu contraseña:">
+                <% if (locals.errors && errors.password) { %>
+                 <p style="margin: -20px 0px 25px 5px; color: red; font-weight: bold; "><%= errors.password.msg %> </p>
+                <% } %>
+            </div>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <input type="checkbox" id="recordame" name="remember"><label for="recordame">Recordar usuario</label>
+            </div>
+            <button class="login-main-button" type="submit">Ingresar</button> 
+            <div>
+                <p class="form__link">¿No estás registrado? <a style="color: blue; font-weight: bold;"  href="/users/register">Registrate</a></p>
+            </div> 
+           </div>
+          </form>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

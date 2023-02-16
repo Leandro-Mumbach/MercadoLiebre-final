@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('partials/head', {title: 'Detalle del producto'}) %>
+    <!-- Css de register -->
+    <style>.register-main{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #ebebeb;}
+  .register-main-div{
+      margin-bottom: 20px;
+  }
+  .register-main-h1{
+      width: 100%;
+      text-align: center;
+      text-decoration: underline;}
+  .register-main-form{
+      width: 80%;}
+  .register-main-div input{
+      width: 100%;
+      padding-left: 5px;    
+      border: 0px;
+      height: 25px;
+      border-radius: 5px;
+      outline: none;}
+  .register-main-p{
+      font-weight: bold;
+      margin-top: 0px;}
+  .register-main-div-perfilUsuario{
+      margin: 15px;}
+  .register-main-div-perfilUsuario label{
+      margin: 0px 15px;}
+  .register-main-div-catInteres{
+      display: flex;
+      flex-direction: column;}
+  .register-main-div-hijo_catInteres{
+      margin: 10px;
+      display: flex;}
+  .register-main-div-hijo_catInteres label{
+      padding: 0px 10px;}
+  .register-main-div-fotoUsuario{
+      margin: 15px 0px 15px 37px;
+      border: solid 1px black;
+      width: max-content;
+      padding: 5px;
+      border-radius: 8px;
+      background-color: #1259c3;
+      color: white;
+      cursor: pointer;}
+  .register-main-div-fotoUsuario:hover{
+      background-color: #0022AA;
+      transition: 0.5s;}
+  .register-main-div-fotoUsuario input{
+      display: none;}
+  .register-main-div-enviar_borrar{
+      display: flex;
+      justify-content: center;}
+  .register-main-div-enviar_borrar button{
+      margin: 0px 17px 20px 17px;
+      padding: 5px;
+      border-radius: 8px;
+      background-color: #1259c3;
+      cursor: pointer;
+      color: white}
+  .register-main-div-enviar_borrar button:hover{
+      background-color: #0022AA;
+      transition: 0.5s;
+  }
+  .form__error__msg{
+    color:red;
+    font-weight: bold;
+  }
+  
+  </style>
+<body class="body-home">
+  <%- include('partials/headerNavbar') %> 
+    <main class="register-main">
+      <h1 class="register-main-h1">Crear tu cuenta</h1>
+      <form class="register-main-form" action="/users/register" method="post">
+        <div class="register-main-div">
+            <input type="text" name="name" placeholder="Nombre y apellido:" value="<%= locals.old ? old.name : null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.name ? errors.name.msg : null%> </p>
+        </div>
+        <div class="register-main-div">
+            <input type="text" name="usuario" placeholder="Nombre de usuari@:" value="<%= locals.old ? old.usuario : null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.usuario ? errors.usuario.msg : null%> </p>
+        </div>
+        <div class="register-main-div">
+            <input type="email" name="email" placeholder="Email@:" value="<%= locals.old && old.email ? old.email : null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.email ? errors.email.msg : null%> </p>
+        </div>
+        <p class="register-main-p">Fecha de nacimiento</p>
+        <div class="register-main-div">
+            <input type="date" name="date" value="2022-07-20" >
+            <p class="form__error__msg"><%= locals.errors && errors.date ? errors.date.msg : null%> </p>
+        </div>
+        <div class="register-main-div">
+            <input type="text" name="domicilio" placeholder="Domicilio:" value="<%= locals.old ? old.domicilio : null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null%> </p>
+        </div>
+        <p class="register-main-p">Perfil de usuario</p>
+        <div class="register-main-div-perfilUsuario">
+            <label for="comprar">Comprar</label>
+            <input type="radio" name="perfilUsuario" value="Comprar" id="comprar" >
+            <label for="vender">Vender</label>
+            <input type="radio" name="perfilUsuario" value="Vender" id="vender" >
+        </div>
+        <p class="register-main-p">Categorías de interés</p>
+        <div class="register-main-div-catInteres">
+          <div class="register-main-div-hijo_catInteres"> 
+            <input type="checkbox" name="interes" value="Electro" id="electro">
+            <label for="electro">Electro</label>
+          </div>
+          <div class="register-main-div-hijo_catInteres">         
+            <input type="checkbox" name="interes" value="Moda" id="moda">
+            <label for="moda">Moda</label>
+          </div>
+          <div class="register-main-div-hijo_catInteres">         
+            <input type="checkbox" name="interes" value="Hogar" id="hogar">
+            <label for="hogar">Hogar</label>
+          </div>
+          <div class="register-main-div-hijo_catInteres">           
+            <input type="checkbox" name="interes" value="Juguetería" id="jugueteria">
+            <label for="jugueteria">Juguetería</label>
+          </div>
+          <div class="register-main-div-hijo_catInteres">  
+            <input type="checkbox" name="interes" value="Vida sana" id="vidaSana">
+            <label for="vidaSana">Vida sana</label>
+          </div>
+        </div>
+        <div class="register-main-div-fotoUsuario">
+            <label for="foto">Elegir foto de usuario</label>
+            <input type="file" name="avatar" accept="jpg" id="foto">
+        </div>
+        <div class="register-main-div">
+            <input type="password" name="password" placeholder="Password:" value="<%= locals.old ? old.password:null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.password ? errors.password.msg : null%> </p>
+        </div>
+        <div class="register-main-div">
+            <input type="password" name="password2" placeholder="Confirmar password:" value="<%= locals.old ? old.password2 : null %>">
+            <p class="form__error__msg"><%= locals.errors && errors.password2 ? errors.password2.msg : null%> </p>
+        </div>
+        <div class="form__box">
+            <input  type="checkbox" id="terms" name="terms">
+            <label class="form__label" for="terms">Acepto términos y condiciones</label>
+            <p class="form__error__msg"><%= locals.errors && errors.terms ? errors.terms.msg : null%> </p>
+        </div>
+        <div class="register-main-div-enviar_borrar">
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar</button>
+        </div>
+      </form>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+   {
+      "id": 1,
+      "name": "leandro",
+      "usuario": "mumbach",
+      "email": "lean@gmail.com",
+      "domicilio": "calle1234",
+      "password": "$2a$10$uml8vkOUv8KzFzDyGU3j0e2jXGvW6Hgb8slrbLlPLAJluXGuxXN2K",
+      "rol": "user",
+      "avatar": null
+   }
+]
