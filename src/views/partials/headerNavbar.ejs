@@ -30,14 +30,12 @@
 			<ul class="left-navbar">
 				<li><a href="/products">Todos los productos</a></li>
 				<li><a href="/#ofertas">Ofertas</a></li>
-				<li><a href="#">Tiendas Oficiales</a></li>
 				<li><a href="/products/create">Vender</a></li>
-				<li><a href="#">Ayuda</a></li>
 			</ul>
 
 			<ul class="right-navbar">
 				<% if (locals.userLogin) { %>
-				<li><%= userLogin.name %></li>
+				<li><i class="fas fa-user"></i> <%= userLogin.name.toUpperCase() %></li>
 				<li><a href="#">Mis compras <i class="fas fa-shopping-basket"></i></a></li>
 				<li><a href="/users/logout">Cerrar sesion <i class="fas fa-sign-in-alt"></i></a></li>
 
